@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        #popup {
+            display: none;
+            position: fixed;
+            top: 20%;
+            left: 20%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+<!-- Pop-up content -->
+<div id="popup">
+    <h2>Calibration & Temperature!!!</h2>
+    <p>Overdue & out of range 18-23 </p>
+    <button  style="height:50px;width:350px"  id="close-popup">Close</button>
+</div>
+
+<!-- JavaScript to handle the pop-up -->
+<script>
+    // Function to show the pop-up
+    function showPopup() {
+        document.getElementById("popup").style.display = "block";
+    }
+
+    // Function to close the pop-up and go back to the previous page
+    function closePopup() {
+        document.getElementById("popup").style.display = "none";
+        window.history.back();
+    }
+
+    // Show the pop-up when the page loads
+    window.addEventListener("load", showPopup);
+
+    // Event listener to close the pop-up when Enter key is pressed
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            closePopup();
+        }
+    });
+
+    // Event listener to close the pop-up when the button is clicked
+    document.getElementById("close-popup").addEventListener("click", closePopup);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<p></p>
+<div class="container">
+    <form method="post">{% csrf_token %}
+
+        {% for field in form %}
+        <p>
+
+            {% if field.name == 'inspector' %}
+                <label style="width: 150px; display: inline-block; text-align: right;">{{ field.label_tag }}</label>
+                <input type="text" name="{{ field.name }}" value="{{ field.value }}" readonly>
+            {% else %}
+                <label style="width: 150px; display: inline-block; text-align: right;">{{ field.label_tag }}</label>
+                {{ field }}
+            {% endif %}
+
+            {% if field.help_text %}
+            <small style="color: grey;">{{ field.help_text }}</small>
+            {% endif %}
+
+            {% for error in field.errors %}
+            <span style="color: red;">  {{ error }}</span>
+            {% endfor %}
+        </p>
+
+        {% endfor %}
+
+        <button style="height:40px; width:300px; margin-left: 50px" type="submit">Save</button>
+    </form>
+</div>
+
+{% endblock content %}
